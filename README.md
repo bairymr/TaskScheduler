@@ -10,7 +10,8 @@ b) While creating the initial repo, add quartz dependency
 
 c) Application has two end points
    i) /task/v1/schedule -- schedule a task to run at every x seconds 
-  ii) /task/v1/trigger  -- trigger an already scheduled task
+
+   ii) /task/v1/trigger  -- trigger an already scheduled task
 
 d) Currently the service creates a file in c:\tmp\ folder. 
 
