@@ -1,7 +1,7 @@
 # TaskScheduler
  Task scheduler for quartz
 
-Version 1.0
+Version 0.01 
 
 Initial Version of Task Scheduler in spring boot. Steps followed:
 a) Create a spring-boot application using sprint initializr
