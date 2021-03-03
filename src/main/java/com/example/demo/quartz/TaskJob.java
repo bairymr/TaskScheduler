@@ -22,7 +22,7 @@ public class TaskJob implements Job {
             TaskInfo taskInfo = (TaskInfo) context
                     .getJobDetail()
                     .getJobDataMap()
-                    .get(TaskInfo.class.getSimpleName());
+                    .get(TaskJob.class.getSimpleName());
             out.println(taskInfo.getJobInformation());
         } catch(FileNotFoundException e) {
             logger.error("error writing a file");
