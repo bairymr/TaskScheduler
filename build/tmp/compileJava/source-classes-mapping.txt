@@ -1,5 +1,7 @@
 com/example/demo/resource/TaskOutputResource.java
  com.example.demo.resource.TaskOutputResource
+com/example/demo/resource/TaskScheduleResource.java
+ com.example.demo.resource.TaskScheduleResource
 com/example/demo/service/TaskInfoUtil.java
  com.example.demo.service.TaskInfoUtil
 com/example/demo/config/TaskInfo.java
@@ -12,7 +14,11 @@ com/example/demo/quartz/TaskJob.java
  com.example.demo.quartz.TaskJob
 com/example/demo/SwaggerConfig.java
  com.example.demo.SwaggerConfig
+com/example/demo/config/TaskSchedule.java
+ com.example.demo.config.TaskSchedule
 com/example/demo/resource/TaskInputResource.java
  com.example.demo.resource.TaskInputResource
 com/example/demo/controller/TaskController.java
  com.example.demo.controller.TaskController
+com/example/demo/assembler/TaskAssembler.java
+ com.example.demo.assembler.TaskAssembler

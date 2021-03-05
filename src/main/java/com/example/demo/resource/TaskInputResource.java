@@ -1,9 +1,10 @@
 package com.example.demo.resource;
 
 public class TaskInputResource {
+
     private String jobName;
-    private int repeatInterval;
     private String jobInformation;
+    private TaskScheduleResource taskScheduleResource;
 
     public String getJobName() {
         return jobName;
@@ -13,19 +14,19 @@ public class TaskInputResource {
         this.jobName = jobName;
     }
 
-    public int getRepeatInterval() {
-        return repeatInterval;
-    }
-
-    public void setRepeatInterval(int repeatInterval) {
-        this.repeatInterval = repeatInterval;
-    }
-
     public String getJobInformation() {
         return jobInformation;
     }
 
     public void setJobInformation(String jobInformation) {
         this.jobInformation = jobInformation;
+    }
+
+    public TaskScheduleResource getTaskScheduleResource() {
+        return taskScheduleResource;
+    }
+
+    public void setTaskScheduleResource(TaskScheduleResource taskScheduleResource) {
+        this.taskScheduleResource = taskScheduleResource;
     }
 }

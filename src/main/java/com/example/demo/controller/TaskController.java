@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.assembler.TaskAssembler;
 import com.example.demo.config.TaskInfo;
+import com.example.demo.config.TaskSchedule;
 import com.example.demo.resource.TaskInputResource;
 import com.example.demo.resource.TaskOutputResource;
 import com.example.demo.service.TaskService;
@@ -20,6 +22,9 @@ public class TaskController {
     @Autowired
     TaskService taskService;
 
+    @Autowired
+    TaskAssembler taskAssembler;
+
     @RequestMapping(method = RequestMethod.POST,
       value = "/schedule",
       consumes = "application/json",
@@ -27,14 +32,16 @@ public class TaskController {
     public ResponseEntity<TaskOutputResource> scheduleTask(
             @RequestBody TaskInputResource taskInputResource) {
 
-        TaskInfo taskInfo = new TaskInfo();
-        taskInfo.setJobName(taskInputResource.getJobName());
-        taskInfo.setJobInformation(taskInputResource.getJobInformation());
-        taskInfo.setIntervalInSeconds(taskInputResource.getRepeatInterval());
-
+        TaskInfo taskInfo = taskAssembler.toTaskInfo(taskInputResource);
         TaskOutputResource taskOutputResource = new TaskOutputResource();
+
+        if (taskInfo == null) {
+          taskOutputResource.setMessage("Input data invalid");
+          return new ResponseEntity<>(taskOutputResource, HttpStatus.BAD_REQUEST);
+        }
         try {
             taskOutputResource = taskService.scheduleTask(taskInfo);
+            taskOutputResource.setMessage("Job scheduled successfully.");
         } catch (SchedulerException e) {
             taskOutputResource.setMessage("Job couldn't be scheduled. error msg: "
                  + e.getMessage());

@@ -4,18 +4,10 @@ import com.example.demo.config.TaskInfo;
 import com.example.demo.resource.TaskInputResource;
 import com.example.demo.resource.TaskOutputResource;
 import com.example.demo.service.TaskService;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.*;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.util.AssertionErrors.assertNotNull;

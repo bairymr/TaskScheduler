@@ -12,6 +12,9 @@ public class TaskInfoUtil {
     public static JobDetail buildJobDetail(final Class jobClass,
                                            final TaskInfo taskInfo) {
 
+        if (taskInfo == null) {
+            return null; //without task info there is no job data.
+        }
         final JobDataMap jobDataMap = new JobDataMap();
         jobDataMap.put(jobClass.getSimpleName(),
                        taskInfo);
@@ -24,12 +27,24 @@ public class TaskInfoUtil {
     }
 
     public static Trigger buildTrigger(final TaskInfo taskInfo) {
+
+        if (taskInfo == null) {
+            return null;
+        }
         SimpleScheduleBuilder builder =
                 SimpleScheduleBuilder
                 .simpleSchedule()
-                .withIntervalInSeconds(taskInfo.getIntervalInSeconds())
                 .withRepeatCount(100);
 
+        if (taskInfo.getTaskSchedule() != null) {
+            if (taskInfo.getTaskSchedule().getIntervalInSeconds() != null) {
+                builder.withIntervalInSeconds(taskInfo.getTaskSchedule().getIntervalInSeconds());
+            } else if (taskInfo.getTaskSchedule().getIntervalInMinutes() != null) {
+                builder.withIntervalInMinutes(taskInfo.getTaskSchedule().getIntervalInMinutes());
+            } else {
+                builder.withIntervalInHours(taskInfo.getTaskSchedule().getIntervalInHours());
+            }
+        }
         return      TriggerBuilder
                    .newTrigger()
                    .withIdentity(taskInfo.getJobName())
